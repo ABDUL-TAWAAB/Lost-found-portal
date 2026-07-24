@@ -586,7 +586,7 @@ include_once '../includes/header.php';
                                 
                                 <div class="chat-avatar-wrapper">
                                     <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($conv['other_pic']); ?>" alt="User Avatar" class="chat-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
-                                    <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($conv['item_pic']); ?>" alt="Item Pic" class="chat-avatar-badge" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=50'">
+                                    <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($conv['item_pic']); ?>" alt="Item Pic" class="chat-avatar-badge" onerror="this.src='./assets/uploads/default_item.jpg';">
                                 </div>
                                 
                                 <div class="chat-info">
@@ -637,7 +637,7 @@ include_once '../includes/header.php';
                         
                         <!-- Mini Item Context Card -->
                         <a href="<?php echo $base_path; ?>item.php?id=<?php echo $active_conv['item_id']; ?>" class="chat-header-item-card" title="Click to view full Item details">
-                            <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($active_conv['item_pic']); ?>" alt="Item" class="chat-header-item-pic" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=100'">
+                            <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($active_conv['item_pic']); ?>" alt="Item" class="chat-header-item-pic" onerror="this.src='./assets/uploads/default_item.jpg';">
                             <div class="chat-header-item-info">
                                 <p class="chat-header-item-title"><?php echo htmlspecialchars($active_conv['item_title']); ?></p>
                                 <p class="chat-header-item-type">

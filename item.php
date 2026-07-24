@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
                 $inst_stmt = mysqli_prepare($conn, $insert_claim);
                 mysqli_stmt_bind_param($inst_stmt, "iis", $item_id, $logged_user_id, $claim_message);
                 if (mysqli_stmt_execute($inst_stmt)) {
-                    $success_msg = "Your claim was submitted successfully! The finder will review it.";
+                    $success_msg = "Your official claim request was submitted successfully! You and the reporter can track it under 'Manage Claims' in the dashboard.";
                 } else {
                     $error_msg = "Failed to submit claim. Try again later.";
                 }
@@ -118,7 +118,7 @@ include_once 'includes/header.php';
         
         <!-- Image block -->
         <div class="detail-image-wrapper">
-            <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="detail-img" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800'">
+            <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="detail-img" onerror="this.src='./assets/uploads/default_item.jpg';">
             <div class="detail-type-tag">
                 <?php echo get_type_badge($item['item_type']); ?>
             </div>
@@ -229,18 +229,24 @@ include_once 'includes/header.php';
                         </div>
                     </div>
 
-                    <!-- Display claims form if item is found and unresolved -->
-                    <?php if ($item['item_type'] === 'found' && $item['status'] === 'Open'): ?>
-                        <div class="claim-form-wrapper">
-                            <h3><i class="fas fa-award text-gold"></i> Submit a Claim</h3>
-                            <p class="text-muted">Is this item yours? Submit a claim with proof of ownership (e.g. describe contents inside, password of phone, or specific scratches) to request the finder to return it.</p>
+                    <!-- Display claims form if item status is active -->
+                    <?php if ($item['status'] === 'Open'): ?>
+                        <div class="claim-form-wrapper" style="background: #fffbeb; border: 1px solid #fde68a; padding: 1.25rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                            <h3 style="color: #b45309; margin-top: 0; font-size: 1.1rem;"><i class="fas fa-file-signature text-gold"></i> Submit Official Claim Request</h3>
+                            <p class="text-muted" style="font-size: 0.88rem; line-height: 1.4; margin-bottom: 0.8rem;">
+                                <?php if ($item['item_type'] === 'found'): ?>
+                                    Is this your item? Submit an official claim with proof of ownership (e.g. unique marks, wallpaper, contents, or serial number) so the finder can verify and return it.
+                                <?php else: ?>
+                                    Did you find or recover this lost item? Submit an official claim/founder notification with proof so the owner can verify and retrieve it.
+                                <?php endif; ?>
+                            </p>
                             
                             <form action="item.php?id=<?php echo $item['id']; ?>" method="POST" class="simple-form">
                                 <input type="hidden" name="action" value="submit_claim">
-                                <div class="form-group">
-                                    <textarea id="claim_message" name="claim_message" rows="3" placeholder="Provide details to verify you are the real owner of this item..." required></textarea>
+                                <div class="form-group" style="margin-bottom: 0.8rem;">
+                                    <textarea id="claim_message" name="claim_message" rows="3" placeholder="Describe proof or details to verify ownership/recovery..." required style="width: 100%; border: 1px solid #fcd34d; border-radius: 6px; padding: 0.6rem; font-size: 0.9rem;"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-full"><i class="fas fa-gavel"></i> Submit Claim Request</button>
+                                <button type="submit" class="btn btn-success btn-full"><i class="fas fa-gavel"></i> Submit Official Claim</button>
                             </form>
                         </div>
                     <?php endif; ?>

@@ -163,7 +163,7 @@ include_once 'includes/header.php';
                 <div class="item-card">
                     <div class="card-image-wrapper">
                         <!-- Render item image -->
-                        <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=400'">
+                        <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="card-img" onerror="this.src='./assets/uploads/default_item.jpg';">
                         <div class="card-type-tag">
                             <?php echo get_type_badge($item['item_type']); ?>
                         </div>
@@ -182,7 +182,7 @@ include_once 'includes/header.php';
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="item.php?id=<?php echo $item['id']; ?>" class="btn btn-outline btn-full">View Details & Contact <i class="fas fa-arrow-right"></i></a>
+                        <a href="item.php?id=<?php echo $item['id']; ?>" class="btn btn-outline btn-full">View & Contact <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             <?php endwhile; ?>

@@ -134,8 +134,8 @@ include_once '../includes/header.php';
             <form action="add-item.php" method="POST" enctype="multipart/form-data" class="auth-form form-grid">
                 
                 <div class="form-group span-2">
-                    <label for="title">Item Title / Name <span class="required">*</span></label>
-                    <input type="text" id="title" name="title" placeholder="e.g. Blue Jansport Backpack" required value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ''; ?>">
+                    <label for="title">Item Title<span class="required">*</span></label>
+                    <input type="text" id="title" name="title" placeholder="e.g. Blue Backpack" required value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ''; ?>">
                 </div>
 
                 <div class="form-group">
@@ -162,7 +162,7 @@ include_once '../includes/header.php';
                 </div>
 
                 <div class="form-group">
-                    <label for="color">Primary Color(Optional)</label>
+                    <label for="color">Color(Optional)</label>
                     <input type="text" id="color" name="color" placeholder="e.g. Black" value="<?php echo isset($_POST['color']) ? htmlspecialchars($_POST['color']) : ''; ?>">
                 </div>
 
@@ -173,7 +173,7 @@ include_once '../includes/header.php';
 
                 <div class="form-group">
                     <label for="location">Location Where Lost/Found <span class="required">*</span></label>
-                    <input type="text" id="location" name="location" placeholder="e.g. Usted NLB GF1" required value="<?php echo isset($_POST['location']) ? htmlspecialchars($_POST['location']) : ''; ?>">
+                    <input type="text" id="location" name="location" placeholder="e.g. Usted" required value="<?php echo isset($_POST['location']) ? htmlspecialchars($_POST['location']) : ''; ?>">
                 </div>
 
                 <div class="form-group">
@@ -183,7 +183,7 @@ include_once '../includes/header.php';
 
                 <div class="form-group span-2">
                     <label for="description">Item Detailed Description <span class="required">*</span></label>
-                    <textarea id="description" name="description" rows="4" placeholder="Describe unique identifying markers, scratching, stickers, locked state, content of bags or folders etc. to help owners identify it..." required><?php echo isset($_POST['description']) ? htmlspecialchars($_POST['description']) : ''; ?></textarea>
+                    <textarea id="description" name="description" rows="4" placeholder="Describe unique identifying markers, scratching, stickers, etc. to help owners identify it..." required><?php echo isset($_POST['description']) ? htmlspecialchars($_POST['description']) : ''; ?></textarea>
                 </div>
 
                 <div class="form-group span-2">

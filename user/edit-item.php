@@ -225,7 +225,7 @@ include_once '../includes/header.php';
                 <div class="form-group span-2" style="display: flex; flex-direction: row; align-items: center; gap: 2rem;">
                     <div class="current-image-preview">
                         <p style="font-size: 0.85rem; color: #4b5563; margin-bottom: 0.25rem;">Current Image:</p>
-                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $item['image']; ?>" alt="Current" class="table-thumbnail" style="width: 100px; height: 100px; border-radius: 8px;" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=100'">
+                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $item['image']; ?>" alt="Current" class="table-thumbnail" style="width: 100px; height: 100px; border-radius: 8px;" onerror="this.src='./assets/uploads/default_item.jpg';">
                     </div>
                     <div style="flex-grow: 1;">
                         <label for="item_image">Replace Image (Optional)</label>

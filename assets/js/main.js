@@ -4,6 +4,23 @@
 // =================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // toggle the navigation menu on mobile view
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburgerIcon = document.getElementById('hamburger');
+    hamburgerIcon.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        // Change the icon based on the menu state
+        if (navMenu.classList.contains('active')) {
+            hamburgerIcon.classList.remove('bx-menu-right');
+            hamburgerIcon.classList.add('bx-x');
+        } else {
+            hamburgerIcon.classList.remove('bx-x');
+            hamburgerIcon.classList.add('bx-menu-right');
+        }
+    });
+
     
     // 1. Password Match Validation (Client-Side)
     const registerForm = document.querySelector('.auth-form');

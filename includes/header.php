@@ -22,6 +22,13 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Lost & Found Portal</title>
+    <!-- Basic Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+<!-- Filled Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+<!-- Brand Icons -->
+<link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,15 +50,16 @@ if (session_status() == PHP_SESSION_NONE) {
             </a>
 
             <!-- Mobile Toggle Menu (Hamburger) -->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
+                <i class="bx bx-bell"></i>
+                <!-- notification bell count here -->
+                <i id="hamburger"  class="bx bx-menu-right"></i>
             </label>
 
             <!-- Navigation Links -->
             <nav class="nav-menu">
-                <a href="<?php echo $base_path; ?>index.php" class="nav-link"><i class="fas fa-home"></i> Home</a>
-                <a href="<?php echo $base_path; ?>search.php" class="nav-link"><i class="fas fa-search"></i> Browse/Search</a>
+                <a href="<?php echo $base_path; ?>index.php" class="nav-link"></i> Home</a>
+                <a href="<?php echo $base_path; ?>search.php" class="nav-link"></i> Browse items</a>
                 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- If user is logged in, show dashboard and messages options -->

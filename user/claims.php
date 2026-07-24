@@ -170,18 +170,18 @@ include_once '../includes/header.php';
                         <thead>
                             <tr>
                                 <th>Item Photo</th>
-                                <th>Found Item Name</th>
-                                <th>Claimant Name & Contact</th>
-                                <th>Claimant Description / Proof</th>
+                                <th>Item Name</th>
+                                <th>Claimant Details</th>
+                                <th>Claimant Proof</th>
                                 <th>Submitted Date</th>
-                                <th>Status / Decision</th>
+                                <th>Decision</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($claims_received as $claim): ?>
                                 <tr>
                                     <td>
-                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $claim['item_pic']; ?>" alt="Item" class="table-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=100'">
+                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $claim['item_pic']; ?>" alt="Item" class="table-thumbnail" onerror="this.src='./assets/uploads/default_item.jpg';">
                                     </td>
                                     <td><strong><?php echo htmlspecialchars($claim['item_title']); ?></strong></td>
                                     <td>
@@ -243,7 +243,7 @@ include_once '../includes/header.php';
                             <?php foreach ($claims_submitted as $claim): ?>
                                 <tr>
                                     <td>
-                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $claim['item_pic']; ?>" alt="Item" class="table-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=100'">
+                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $claim['item_pic']; ?>" alt="Item" class="table-thumbnail" onerror="this.src='./assets/uploads/default_item.jpg';">
                                     </td>
                                     <td>
                                         <a href="<?php echo $base_path; ?>item.php?id=<?php echo $claim['item_id']; ?>" class="text-underline text-blue" style="font-weight: 600;">

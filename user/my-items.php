@@ -152,7 +152,7 @@ include_once '../includes/header.php';
                             <?php foreach ($my_items as $item): ?>
                                 <tr>
                                     <td>
-                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $item['image']; ?>" alt="Preview" class="table-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=100'">
+                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $item['image']; ?>" alt="Preview" class="table-thumbnail" onerror="this.src='./assets/uploads/default_item.jpg';">
                                     </td>
                                     <td>
                                         <strong><?php echo htmlspecialchars($item['title']); ?></strong>

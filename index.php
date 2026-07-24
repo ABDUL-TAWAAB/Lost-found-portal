@@ -42,7 +42,7 @@ $recent_result = mysqli_query($conn, $recent_items_query);
         </div>
     </div>
     <div class="hero-graphic">
-        <i class="fas fa-box-open hero-icon-large"></i>
+        <img style="width: 500px;" src="assets/images/magnifying_glass.png" alt="Lost and Found Illustration" class="hero-img">
     </div>
 </section>
 
@@ -85,7 +85,7 @@ $recent_result = mysqli_query($conn, $recent_items_query);
                 <div class="item-card">
                     <div class="card-image-wrapper">
                         <!-- Display uploaded image or placeholder -->
-                        <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=400'">
+                        <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="card-img" onerror="this.src='./assets/uploads/default_item.jpg';">
                         <div class="card-type-tag">
                             <?php echo get_type_badge($item['item_type']); ?>
                         </div>
