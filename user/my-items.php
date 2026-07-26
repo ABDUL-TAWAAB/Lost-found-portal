@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
             mysqli_stmt_close($check_stmt);
             
             // Delete the file from directory if it isn't default
-            if ($image_to_delete !== 'default_item.png' && !empty($image_to_delete)) {
+            if ($image_to_delete !== 'default_item.jpg' && !empty($image_to_delete)) {
                 $file_path = '../assets/uploads/' . $image_to_delete;
                 if (file_exists($file_path)) {
                     unlink($file_path); // Delete image from server

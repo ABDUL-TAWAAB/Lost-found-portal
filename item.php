@@ -10,6 +10,8 @@
 require_once 'includes/db.php';
 require_once 'includes/functions.php';
 require_once 'includes/session.php';
+require_once "includes/encryption.php";
+require_once "includes/config.php";
 
 // 2. Validate the item ID from URL parameter
 $item_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -62,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
     elseif ($action === 'send_message') {
         $receiver_id = (int)$_POST['receiver_id'];
         $message_text = sanitize_input($_POST['message']);
+        $encrypted_message = encryptMessage($message_text); // Encrypt the message before storing
         
         if (empty($message_text)) {
             $error_msg = "Message content cannot be empty.";
@@ -69,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['user_id'])) {
             // Insert chat message
             $insert_msg = "INSERT INTO messages (sender_id, receiver_id, item_id, message) VALUES (?, ?, ?, ?)";
             $msg_stmt = mysqli_prepare($conn, $insert_msg);
-            mysqli_stmt_bind_param($msg_stmt, "iiis", $logged_user_id, $receiver_id, $item_id, $message_text);
+            mysqli_stmt_bind_param($msg_stmt, "iiis", $logged_user_id, $receiver_id, $item_id, $encrypted_message);
             if (mysqli_stmt_execute($msg_stmt)) {
                 $success_msg = "Your message was sent successfully! Go to Messages tab to view the chat.";
             } else {
@@ -118,7 +121,7 @@ include_once 'includes/header.php';
         
         <!-- Image block -->
         <div class="detail-image-wrapper">
-            <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="detail-img" onerror="this.src='./assets/uploads/default_item.jpg';">
+            <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.jpg' ? $item['image'] : 'default_item.jpg'; ?>" alt="<?php echo $item['title']; ?>" class="detail-img" onerror="this.src='./assets/uploads/default_item.jpg';">
             <div class="detail-type-tag">
                 <?php echo get_type_badge($item['item_type']); ?>
             </div>

@@ -276,7 +276,7 @@ include_once '../includes/header.php';
                             <?php foreach ($recent_items as $item): ?>
                                 <tr>
                                     <td>
-                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($item['image']); ?>" alt="Thumbnail" class="table-thumbnail" onerror="this.src='./assets/uploads/default_item.jpg';">
+                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($item['image']); ?>" alt="Thumbnail" class="table-thumbnail" onerror="this.src='../assets/uploads/default_item.jpg';">
                                     </td>
                                     <td>
                                         <strong><?php echo htmlspecialchars($item['title']); ?></strong>

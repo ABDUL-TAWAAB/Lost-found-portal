@@ -231,7 +231,8 @@ include_once '../includes/header.php';
                                     <input type="hidden" name="claim_id" value="<?php echo $claim['id']; ?>">
                                     <input type="hidden" name="item_id" value="<?php echo $claim['item_id']; ?>">
                                     <input type="hidden" name="owner_response" value="approved">
-                                    <button type="submit" class="btn btn-primary" style="background: var(--accent-green); border-color: var(--accent-green); font-size: 0.82rem; padding: 0.4rem 0.8rem;" <?php echo $claim['owner_response'] === 'approved' ? 'disabled' : ''; ?>>
+                                    <button type="submit" class="btn btn-primary" style="background:#10b981; color: white; border-color: var(--accent-green); font-size: 0.82rem; padding: 0.4rem 0.8rem;" 
+                                        <?php echo $claim['owner_response'] === 'approved' ? 'disabled' : ''; ?>>
                                         <i class="fas fa-check"></i> Approve Claim
                                     </button>
                                 </form>
@@ -241,7 +242,8 @@ include_once '../includes/header.php';
                                     <input type="hidden" name="claim_id" value="<?php echo $claim['id']; ?>">
                                     <input type="hidden" name="item_id" value="<?php echo $claim['item_id']; ?>">
                                     <input type="hidden" name="owner_response" value="rejected">
-                                    <button type="submit" class="btn btn-danger" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;" <?php echo $claim['owner_response'] === 'rejected' ? 'disabled' : ''; ?>>
+                                    <button type="submit" class="btn btn-danger" style="font-size: 0.82rem; padding: 0.4rem 0.8rem;" 
+                                        <?php echo $claim['owner_response'] === 'rejected' ? 'disabled' : ''; ?>>
                                         <i class="fas fa-times"></i> Reject Claim
                                     </button>
                                 </form>
@@ -249,7 +251,7 @@ include_once '../includes/header.php';
                                 <form action="claims.php" method="POST" onsubmit="return confirm('Permanently delete this claim record?');" style="display: inline;">
                                     <input type="hidden" name="action_type" value="delete_claim">
                                     <input type="hidden" name="claim_id" value="<?php echo $claim['id']; ?>">
-                                    <button type="submit" class="btn btn-outline" style="color: var(--accent-red); font-size: 0.82rem; padding: 0.4rem 0.6rem;" title="Delete Record"><i class="far fa-trash-alt"></i></button>
+                                    <button type="submit" class="btn btn-outline" style="color: var(--accent-red); font-size: 0.82rem; padding: 0.4rem 0.6rem;" title="Delete Record"><i class="far fa-trash-alt"></i> Delete</button>
                                 </form>
                             </div>
                         </div>

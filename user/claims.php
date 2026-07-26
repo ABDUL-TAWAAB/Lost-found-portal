@@ -120,7 +120,7 @@ include_once '../includes/header.php';
 ?>
 
 <div class="dashboard-layout">
-    
+
     <!-- Sidebar -->
     <aside class="dash-sidebar">
         <div class="sidebar-profile">
@@ -181,14 +181,17 @@ include_once '../includes/header.php';
                             <?php foreach ($claims_received as $claim): ?>
                                 <tr>
                                     <td>
-                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo $claim['item_pic']; ?>" alt="Item" class="table-thumbnail" onerror="this.src='./assets/uploads/default_item.jpg';">
+                                        <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($claim['item_pic']); ?>" alt="Item" class="table-thumbnail" onerror="this.src='.../assets/uploads/default_item.jpg';"">
                                     </td>
+
                                     <td><strong><?php echo htmlspecialchars($claim['item_title']); ?></strong></td>
                                     <td>
                                         <strong><?php echo htmlspecialchars($claim['claimant_name']); ?></strong><br>
                                         <small class="text-muted"><i class="fas fa-envelope"></i> <?php echo htmlspecialchars($claim['claimant_email']); ?></small><br>
                                         <small class="text-muted"><i class="fas fa-phone"></i> <?php echo htmlspecialchars($claim['claimant_phone']); ?></small>
                                     </td>
+
+
                                     <td>
                                         <div style="max-width: 300px; font-size: 0.85rem; line-height: 1.4;">
                                             <?php echo nl2br(htmlspecialchars($claim['claim_message'])); ?>
@@ -196,17 +199,29 @@ include_once '../includes/header.php';
                                     </td>
                                     <td><?php echo format_date($claim['created_at']); ?></td>
                                     <td>
-                                        <?php if ($claim['owner_response'] === 'pending'): ?>
+                                        <?php if ($claim['owner_response'] === 'Pending'): ?>
                                             <div class="action-buttons-group">
-                                                <a href="claims.php?action=approve&claim_id=<?php echo $claim['id']; ?>" class="btn btn-success" style="padding: 0.35rem 0.65rem; font-size: 0.82rem;" onclick="return confirm('Are you sure you want to approve this claim? It will mark the item status as claimed.')"><i class="fas fa-check"></i> Approve</a>
-                                                <a href="claims.php?action=reject&claim_id=<?php echo $claim['id']; ?>" class="btn btn-danger" style="padding: 0.35rem 0.65rem; font-size: 0.82rem;" onclick="return confirm('Are you sure you want to reject this claim request?')"><i class="fas fa-times"></i> Reject</a>
+                                                <a href="claims.php?action=approve&claim_id=<?php echo $claim['id']; ?>" class="btn btn-success" style="padding: 0.35rem 0.65rem; font-size: 0.82rem;" 
+                                                    onclick="return confirm('Are you sure you want to approve this claim? It will mark the item status as claimed.')">
+                                                    <i class="fas fa-check"></i>
+                                                 Approve
+                                                </a>
+                                                <a href="claims.php?action=reject&claim_id=<?php echo $claim['id']; ?>" class="btn btn-danger" style="padding: 0.35rem 0.65rem; font-size: 0.82rem;" 
+                                                    onclick="return confirm('Are you sure you want to reject this claim request?')">
+                                                    <i class="fas fa-times"></i> 
+                                                    Reject
+                                                </a>
                                             </div>
                                         <?php else: ?>
                                             <?php 
-                                            if ($claim['owner_response'] === 'approved') {
-                                                echo "<span class='text-green' style='font-weight:600;'><i class='fas fa-check-circle'></i> Approved</span>";
+                                            if ($claim['owner_response'] === 'Approved') {
+                                                echo "<span class='text-green' style='font-weight:600; display:flex; align-items:center; justify-content:center;'>
+                                                            <i class='fas fa-check-circle'></i>Approved</span>";
                                             } else {
-                                                echo "<span class='text-red' style='font-weight:600;'><i class='fas fa-times-circle'></i> Rejected</span>";
+                                                echo "<span class='text-red' style='font-weight:600; display:flex; align-item:center; justify-content:center;'>
+                                                            <i class='fas fa-times-circle'></i> 
+                                                            Rejected
+                                                    </span>";
                                             }
                                             ?>
                                         <?php endif; ?>
@@ -259,12 +274,23 @@ include_once '../includes/header.php';
                                     <td><?php echo format_date($claim['created_at']); ?></td>
                                     <td>
                                         <?php 
-                                        if ($claim['owner_response'] === 'pending') {
-                                            echo "<span class='text-gold' style='font-weight:600;'><i class='fas fa-hourglass-half'></i> Pending Review</span>";
-                                        } elseif ($claim['owner_response'] === 'approved') {
-                                            echo "<span class='text-green' style='font-weight:600;'><i class='fas fa-check-circle'></i> Claim Approved!</span>";
+                                        if ($claim['owner_response'] === 'Pending') {
+                                            echo "<span class='text-gold' style='font-weight:600;'>
+                                                        <i class='fas fa-hourglass-half'></i>
+                                                        Pending
+                                                    </span>";
+
+                                        } elseif ($claim['owner_response'] === 'Approved') {
+                                            echo "<span class='text-green' style='font-weight:600;'>
+                                                    <i class='fas fa-check-circle'></i>
+                                                    Approved!
+                                                </span>";
+
                                         } else {
-                                            echo "<span class='text-red' style='font-weight:600;'><i class='fas fa-times-circle'></i> Claim Rejected</span>";
+                                            echo "<span class='text-red' style='font-weight:600;'>
+                                                        <i class='fas fa-times-circle'></i>
+                                                        Rejected
+                                                    </span>";
                                         }
                                         ?>
                                     </td>

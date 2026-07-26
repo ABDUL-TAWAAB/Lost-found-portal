@@ -46,11 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_msg = "Please fill in all required fields marked with an asterisk (*).";
     } else {
         // Handle image upload
-        $image_name = "default_item.png"; // Fallback image
+        $image_name = "default_item.jpg"; // Fallback image
         
         if (isset($_FILES['item_image']) && $_FILES['item_image']['error'] === UPLOAD_ERR_OK) {
             // Upload to assets/uploads/ folder
-            $uploaded = upload_image($_FILES['item_image'], '../assets/uploads/', 'default_item.png');
+            $uploaded = upload_image($_FILES['item_image'], '../assets/uploads/', 'default_item.jpg');
             if ($uploaded !== false) {
                 $image_name = $uploaded;
             } else {

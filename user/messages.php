@@ -10,6 +10,8 @@
 require_once '../includes/db.php';
 require_once '../includes/session.php';
 require_once '../includes/functions.php';
+require_once '../includes/encryption.php';
+require_once '../includes/config.php';
 
 // 2. Protect page - redirect to login if not logged in
 check_login();
@@ -602,7 +604,7 @@ include_once '../includes/header.php';
                                         <?php endif; ?>
                                         <?php echo htmlspecialchars($conv['item_title']); ?>
                                     </div>
-                                    <p class="chat-message-preview"><?php echo htmlspecialchars($conv['last_message']); ?></p>
+                                    <p class="chat-message-preview"><?php echo htmlspecialchars(decryptMessage($conv['last_message'])); ?></p>
                                 </div>
                                 
                                 <?php if ($conv['unread_count'] > 0): ?>
@@ -660,7 +662,7 @@ include_once '../includes/header.php';
                             <div class="message-row <?php echo $is_mine ? 'outgoing' : 'incoming'; ?>">
                                 <img src="<?php echo $base_path; ?>assets/uploads/<?php echo htmlspecialchars($m['sender_pic']); ?>" alt="S" class="bubble-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
                                 <div class="message-bubble">
-                                    <div style="word-break: break-word;"><?php echo nl2br(htmlspecialchars($m['message'])); ?></div>
+                                    <div style="word-break: break-word;"><?php echo nl2br(htmlspecialchars(decryptMessage($m['message']))); ?></div>
                                     <span class="message-meta"><?php echo date('M d, H:i', strtotime($m['created_at'])); ?></span>
                                 </div>
                             </div>

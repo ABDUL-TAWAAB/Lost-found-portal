@@ -22,10 +22,8 @@ if (ini_get("session.use_cookies")) {
         $params["secure"], $params["httponly"]
     );
 }
-
 // 4. Finally, destroy the session.
 session_destroy();
-
 // 5. Redirect the user back to the public homepage
 header("Location: index.php?msg=loggedout");
 exit();

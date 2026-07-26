@@ -163,7 +163,7 @@ include_once 'includes/header.php';
                 <div class="item-card">
                     <div class="card-image-wrapper">
                         <!-- Render item image -->
-                        <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.png' ? $item['image'] : 'default_item.png'; ?>" alt="<?php echo $item['title']; ?>" class="card-img" onerror="this.src='./assets/uploads/default_item.jpg';">
+                        <img src="assets/uploads/<?php echo !empty($item['image']) && $item['image'] !== 'default_item.jpg' ? $item['image'] : 'default_item.jpg'; ?>" alt="<?php echo $item['title']; ?>" class="card-img" onerror="this.src='./assets/uploads/default_item.jpg';">
                         <div class="card-type-tag">
                             <?php echo get_type_badge($item['item_type']); ?>
                         </div>

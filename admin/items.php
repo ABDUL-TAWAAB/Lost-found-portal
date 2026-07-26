@@ -265,7 +265,7 @@ include_once '../includes/header.php';
                                         <strong style="font-size: 0.85rem;"><?php echo htmlspecialchars($item['poster_name']); ?></strong>
                                         <br><small class="text-muted" style="font-size: 0.85rem;"><?php echo htmlspecialchars($item['poster_email']); ?></small>
                                     </td>
-                                    <td><small><i class="fas fa-map-marker-alt text-blue"></i> <?php echo htmlspecialchars($item['location']); ?></small></td>
+                                    <td><small><?php echo htmlspecialchars($item['location']); ?></small></td>
                                     <td><small><?php echo format_date($item['date_lost_found']); ?></small></td>
                                     <td><?php echo get_status_badge($item['status']); ?></td>
                                     <td>

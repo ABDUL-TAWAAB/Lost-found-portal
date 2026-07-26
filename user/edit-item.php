@@ -69,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $image_name = $item['image']; // Default to current image
         
         if (isset($_FILES['item_image']) && $_FILES['item_image']['error'] === UPLOAD_ERR_OK) {
-            $uploaded = upload_image($_FILES['item_image'], '../assets/uploads/', 'default_item.png');
+            $uploaded = upload_image($_FILES['item_image'], '../assets/uploads/', 'default_item.jpg');
             if ($uploaded !== false) {
                 // Delete previous non-default image from server disk to save space
-                if ($item['image'] !== 'default_item.png' && !empty($item['image'])) {
+                if ($item['image'] !== 'default_item.jpg' && !empty($item['image'])) {
                     $old_file_path = '../assets/uploads/' . $item['image'];
                     if (file_exists($old_file_path)) {
                         unlink($old_file_path);
@@ -209,10 +209,10 @@ include_once '../includes/header.php';
                 <div class="form-group">
                     <label for="status">Resolution Status <span class="required">*</span></label>
                     <select id="status" name="status" required>
-                        <option value="Open" <?php echo $item['status'] === 'Open' ? 'selected' : ''; ?>>Open (Still Unresolved)</option>
-                        <option value="claimed" <?php echo $item['status'] === 'claimed' ? 'selected' : ''; ?>>Claimed (Returned to Owner)</option>
-                        <option value="recovered" <?php echo $item['status'] === 'recovered' ? 'selected' : ''; ?>>Recovered (Reunited)</option>
-                        <option value="archived" <?php echo $item['status'] === 'archived' ? 'selected' : ''; ?>>Archived (Closed/Old)</option>
+                        <option value="Open" <?php echo $item['status'] === 'Open' ? 'selected' : ''; ?>>Open (Still unknown)</option>
+                        <option value="claimed" <?php echo $item['status'] === 'Claimed' ? 'selected' : ''; ?>>Claimed</option>
+                        <option value="Returned" <?php echo $item['status'] === 'Returned' ? 'selected' : ''; ?>>Returned</option>
+                        <option value="Closed" <?php echo $item['status'] === 'Closed' ? 'selected' : ''; ?>>Closed</option>
                     </select>
                 </div>
 
